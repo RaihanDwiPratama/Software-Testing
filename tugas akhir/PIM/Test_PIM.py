@@ -30,19 +30,45 @@ def test_pim(driver):
 
     time.sleep(3)
     
+    # Kasus Pengujian Positive
     # Mengklik submenu "PIM"
     submenu_apply = driver.find_element(By.XPATH, '//*[@id="app"]/div[1]/div[1]/aside/nav/div[2]/ul/li[2]/a')
     submenu_apply.click()
     
     time.sleep(5)
+    
     # Cari karyawan dengan ID
-    employee_id = '0015'
+    employee_id = '0038'
     driver.find_element(By.XPATH, '//*[@id="app"]/div[1]/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div/div[2]/div/div[2]/input').send_keys(employee_id)
     
     # Cek apakah hasil pencarian sesuai dengan ID karyawan
     driver.find_element(By.XPATH,'//*[@id="app"]/div[1]/div[2]/div[2]/div/div[1]/div[2]/form/div[2]/button[2]').click()
     time.sleep(5)
-
+    
+    # Verifikasi hasil pencarian
+    search_result_id = driver.find_element(By.XPATH, '//*[@id="app"]/div[1]/div[2]/div[2]/div/div[2]/div[3]/div/div[2]/div/div/div[2]/div').text
+    assert search_result_id == employee_id, 'Search result mismatch - Positive Test'
+    time.sleep(5)
+    
+    # Kasus Pengujian Negative
+    # Mengklik submenu "PIM"
+    submenu_apply = driver.find_element(By.XPATH, '//*[@id="app"]/div[1]/div[1]/aside/nav/div[2]/ul/li[2]/a')
+    submenu_apply.click()
+    
+    time.sleep(5)
+    
+    # Cari karyawan dengan ID
+    employee_id = '0101'
+    driver.find_element(By.XPATH, '//*[@id="app"]/div[1]/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div/div[2]/div/div[2]/input').send_keys(employee_id)
+    
+    # Cek apakah hasil pencarian sesuai dengan ID karyawan
+    driver.find_element(By.XPATH,'//*[@id="app"]/div[1]/div[2]/div[2]/div/div[1]/div[2]/form/div[2]/button[2]').click()
+    time.sleep(5)
+    
+    # Verifikasi hasil pencarian negatif
+    search_result_id = driver.find_element(By.XPATH, '//*[@id="app"]/div[1]/div[2]/div[2]/div/div[2]/div[3]/div/div[2]/div[41]/div').text
+    assert search_result_id == employee_id, 'Search result mismatch - Negative Test'
+    
     # Membuat workbook dan worksheet baru
     workbook = Workbook()
     worksheet = workbook.active
