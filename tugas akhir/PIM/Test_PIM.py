@@ -52,20 +52,20 @@ def test_pim(driver):
     
     # Kasus Pengujian Negative
     # Mengklik submenu "PIM"
-    # submenu_apply = driver.find_element(By.XPATH, '//*[@id="app"]/div[1]/div[1]/aside/nav/div[2]/ul/li[2]/a')
-    # submenu_apply.click()
+    submenu_apply = driver.find_element(By.XPATH, '//*[@id="app"]/div[1]/div[1]/aside/nav/div[2]/ul/li[2]/a')
+    submenu_apply.click()
     
-    # time.sleep(5)
+    time.sleep(5)
     
-    # # Cari karyawan dengan ID
-    # employee_id = '0101'
-    # driver.find_element(By.XPATH, '//*[@id="app"]/div[1]/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div/div[2]/div/div[2]/input').send_keys(employee_id)
+    # Cari karyawan dengan ID
+    employee_id = '0101'
+    driver.find_element(By.XPATH, '//*[@id="app"]/div[1]/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div/div[2]/div/div[2]/input').send_keys(employee_id)
     
-    # # Cek apakah hasil pencarian sesuai dengan ID karyawan
-    # driver.find_element(By.XPATH,'//*[@id="app"]/div[1]/div[2]/div[2]/div/div[1]/div[2]/form/div[2]/button[2]').click()
-    # time.sleep(5)
+    # Cek apakah hasil pencarian sesuai dengan ID karyawan
+    driver.find_element(By.XPATH,'//*[@id="app"]/div[1]/div[2]/div[2]/div/div[1]/div[2]/form/div[2]/button[2]').click()
+    time.sleep(5)
     
-    # # Verifikasi hasil pencarian negatif
-    # search_result_id = driver.find_element(By.XPATH, '//*[@id="app"]/div[1]/div[2]/div[2]/div/div[2]/div[3]/div/div[2]/div[41]/div').text
-    # assert search_result_id == employee_id, 'Search result mismatch - Negative Test'
+    # Verifikasi hasil pencarian negatif
+    search_result_id = driver.find_element(By.XPATH, '//*[@id="app"]/div[1]/div[2]/div[2]/div/div[2]/div[3]/div/div[2]/div[41]/div').text
+    assert search_result_id == employee_id, 'Search result mismatch - Negative Test'
     
