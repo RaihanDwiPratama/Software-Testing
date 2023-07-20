@@ -43,7 +43,7 @@ def test(driver):
     
     user_role_input = driver.find_element(By.XPATH, '//*[@id="app"]/div[1]/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div/div[2]/div/div[2]/div/div/div[1]')
     user_role_input.click()
-    time.sleep(1)
+    time.sleep(3)
     user_role_option = driver.find_element(By.XPATH, '//*[@id="app"]/div[1]/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div/div[2]/div/div[2]/div/div/div[1]')
     user_role_option.send_keys('admin')
     user_role_option.send_keys(Keys.ENTER)
@@ -255,4 +255,3 @@ def test(driver):
     submit_user = driver.find_element(By.XPATH, '//*[@id="app"]/div[1]/div[2]/div[2]/div/div/form/div[3]/button[2]')
     submit_user.click()
     time.sleep(5)
-    
